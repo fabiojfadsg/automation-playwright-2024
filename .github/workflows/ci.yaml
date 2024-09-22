@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  infra:
+  Playwright-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -15,18 +15,8 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
-  test:
-    timeout-minutes: 60
-    needs: infra
-    runs-on: ubuntu-latest
-    steps:
     - name: Run tests
       run: npm run test:hom
-  artifacts:
-    timeout-minutes: 60
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
