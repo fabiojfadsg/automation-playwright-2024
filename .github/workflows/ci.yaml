@@ -29,7 +29,9 @@ jobs:
         name: test-results
         path: test-results/junit.xml
         retention-days: 
-    - uses: skitionek/notify-microsoft-teams@master
-      if: always()
+    - uses: septblast/ms-teams-notification@v2.0.2
       with:
-        webhook_url: ${{ secrets.GITHUB_TOKEN}}
+        github-token: ${{ github.token }} # this will use the runner's token.
+        ms-teams-webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+        notification-summary: Your custom notification message 
+        notification-color: 17a2b8
