@@ -1,0 +1,24 @@
+name: Default ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test:hom
