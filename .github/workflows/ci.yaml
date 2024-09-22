@@ -28,4 +28,8 @@ jobs:
       with:
         name: test-results
         path: test-results/junit.xml
-        retention-days: 30
+        retention-days: 
+    - uses: skitionek/notify-microsoft-teams@master
+      if: always()
+      with:
+        webhook_url: ${{ secrets.MSTEAMS_WEBHOOK}}
