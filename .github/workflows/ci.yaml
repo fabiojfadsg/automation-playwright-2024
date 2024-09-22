@@ -27,5 +27,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: test-results
-        path: test-results/
+        path: test-results/junit.xml
         retention-days: 30
